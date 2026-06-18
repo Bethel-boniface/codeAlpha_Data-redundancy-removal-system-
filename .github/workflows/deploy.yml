@@ -25,7 +25,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            cd ~/codeAlpha_Data-redundancy-removal-system-
+            cd ~/codeAlpha_Data-redundancy-removal-system-/backend
 
             git pull origin main
 
