@@ -1,4 +1,4 @@
-name: Deploy DATA REDUNDANCY REMOVAL
+name: Deploy codeAlpha_Data-redundancy-removal-system
 
 
 on:
@@ -25,7 +25,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            cd ~/DATA-REDUNDANCY-REMOVAL/backend
+            cd ~/codeAlpha_Data-redundancy-removal-system
 
             git pull origin main
 
