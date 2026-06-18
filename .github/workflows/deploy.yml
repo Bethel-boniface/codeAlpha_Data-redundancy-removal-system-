@@ -31,4 +31,4 @@ jobs:
 
             npm install
 
-            pm2 restart dedupe-api ||pm2 start backend/server.js --name dedupe-api
+            pm2 restart dedupe-api || pm2 start backend/server.js --name dedupe-api
