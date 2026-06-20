@@ -1,34 +1,38 @@
-name: Deploy codeAlpha_Data-redundancy-removal-system-
-
+name: Deploy Pristine Code Alpha
 
 on:
-  push:
-    branches:
-      - main
+push:
+branches:
+- main
 
 jobs:
-  deploy:
+deploy:
 
-    runs-on: ubuntu-latest
+```
+runs-on: ubuntu-latest
 
-    steps:
+steps:
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+  - name: Checkout Repository
+    uses: actions/checkout@v4
 
-      - name: Deploy To EC2
-        uses: appleboy/ssh-action@v1.0.3
+  - name: Deploy to EC2 using Docker
+    uses: appleboy/ssh-action@v1.0.3
 
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+    with:
+      host: ${{ secrets.EC2_HOST }}
+      username: ${{ secrets.EC2_USERNAME }}
+      key: ${{ secrets.EC2_SSH_KEY }}
 
-          script: |
-            cd ~/codeAlpha_Data-redundancy-removal-system-/backend
+      script: |
 
-            git pull origin main
+        cd ~/Pristine-Code-Alpha
 
-            npm install
+        git pull origin main
 
-            pm2 restart dedupe-api || pm2 start server.js --name dedupe-api
+        docker compose down
+
+        docker compose up --build -d
+
+        docker image prune -f
+```

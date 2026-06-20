@@ -75,3 +75,24 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
+
+router.get("/", async (req, res) => {
+
+  try {
+
+    const records =
+      await pool.query(
+        "SELECT * FROM records ORDER BY id DESC"
+      );
+
+    res.json(records.rows);
+
+  } catch (error) {
+
+    res.status(500).json({
+      error: error.message
+    });
+
+  }
+
+});

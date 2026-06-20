@@ -1,41 +1,23 @@
 services:
 
-  postgres:
-    image: postgres:15
+  frontend:
+    build: ./frontend
 
-    container_name: dedupe-postgres
-
-    environment:
-      POSTGRES_DB: dedupe_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+    container_name: pristine-frontend
 
     ports:
-      - "5432:5432"
+      - "80:80"
 
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    depends_on:
+      - backend
 
   backend:
-
     build: ./backend
 
-    container_name: dedupe-api
+    container_name: pristine-backend
 
     ports:
       - "5000:5000"
 
-    environment:
-      DB_USER: postgres
-      DB_HOST: postgres
-      DB_NAME: dedupe_db
-      DB_PASSWORD: password
-      DB_PORT: 5432
-      PORT: 5000
-
-    depends_on:
-      - postgres
-
-volumes:
-  postgres_data:
+  postgres:
+    image: postgres:15
