@@ -19,9 +19,10 @@ app.get("/", (req, res) => {
 
 app.listen(
     process.env.PORT,
+    '0.0.0.0'
     () => {
         console.log(
-            `Server running on ${process.env.PORT}`
+            `Server running on 0.0.0.0:${process.env.PORT}`
         );
     }
 );
