@@ -18,7 +18,7 @@ services:
       - "5000:5000"
 
     env_file:
-      - .env
+      - ./backend/.env
 
     depends_on:
       postgres:
