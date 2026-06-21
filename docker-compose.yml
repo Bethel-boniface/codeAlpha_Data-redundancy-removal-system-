@@ -21,7 +21,7 @@ services:
 
   postgres:
     image: postgres:15
-      container_name: pristine-postgres
+      container_name: pristine_postgres
   environment:
     POSTGRES_USER: ${POSTGRES_USER}
     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
