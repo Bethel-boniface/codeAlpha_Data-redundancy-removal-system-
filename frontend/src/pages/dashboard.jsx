@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Header from "../components/Header";
-import RecordForm from "../components/RecordForm";
+import DetailedForm from "../components/DetailedForm";
 import RecordTable from "../components/RecordTable";
 import StatsCard from "../components/StatsCard";
 
@@ -42,7 +42,7 @@ function Dashboard() {
 
       </div>
 
-      <RecordForm
+      <DetailedForm
         refresh={loadRecords}
       />
 
