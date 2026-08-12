@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors({
-    origin: 'http://13.53.39.129',
+    origin: 'http://51.20.8.199',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
